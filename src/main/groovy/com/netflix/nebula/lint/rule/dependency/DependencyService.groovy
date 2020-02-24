@@ -187,7 +187,7 @@ class DependencyService {
     @SuppressWarnings("GrMethodMayBeStatic") // Static memoization will leak
     @Memoized
     JarContents jarContents(File file) {
-        if (!file.exists())
+        if (!file.exists() || file.isDirectory())
             return new JarContents(entryNames: Collections.emptyList())
 
         def entryNames = []
